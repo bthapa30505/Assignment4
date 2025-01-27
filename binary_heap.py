@@ -24,12 +24,15 @@ class MaxHeapPriorityQueue:
         # creating an array-based heap as it is more efficient and easy to access.
         self.heap = []
 
+    #returns the index of parent.
     def _parent(self, index):
         return (index - 1) // 2
 
+    #return the index of left child given parents index.
     def _left_child(self, index):
         return 2 * index + 1
 
+    #return the index of right child given parent index.
     def _right_child(self, index):
         return 2 * index + 2
 

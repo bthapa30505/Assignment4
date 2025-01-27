@@ -37,6 +37,10 @@ def heapify(numbers_list, heap_size, root_index):
 def make_max_heap(numbers_list):
     total_items = len(numbers_list)
     # Start from the last parent node and go up to the root
+    # The range(total_items // 2 - 1, -1, -1) iterates from the last non-leaf node to the 
+    # root in reverse order. This ensures smaller subtrees are heapified first, 
+    # maintaining the max-heap property. The loop starts at total_items // 2 - 1, 
+    # stops before -1, and steps backward by -1.
     for i in range(total_items // 2 - 1, -1, -1):
         heapify(numbers_list, total_items, i)
 
@@ -73,22 +77,27 @@ random_data = random.sample(range(1, 20001), 20000)
 #This is a random array of 10000 numbers. They can range from 0 to 10000 but can have duplicates.
 random_data_duplicate = random.choices(range(1, 20001), k=20000)
 
-
+#The below code is used to call heapsort method and record the time required to call 
+# each type of data.
+# Sorted data.
 start_time = time.time()
 heapsort(sorted)
 end_time = time.time()
 print_difference(start_time, end_time, "sorted data for heap sort")
 
+#Reverse sorted data
 start_time = time.time()
 heapsort(sorted_descending)
 end_time = time.time()
 print_difference(start_time, end_time, "reverse sorted data for heap sort")
 
+#Random data.
 start_time = time.time()
 heapsort(random_data)
 end_time = time.time()
 print_difference(start_time, end_time, "random data for heap sort")
 
+#Random data with duplicates
 start_time = time.time()
 heapsort(random_data_duplicate)
 end_time = time.time()
